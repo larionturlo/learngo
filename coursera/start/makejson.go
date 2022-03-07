@@ -8,29 +8,29 @@ import (
 	"os"
 )
 
-type Person map[string]string
+type PersonMap map[string]string
 
 const (
 	keyPersonName    = "name"
 	keyPersonAddress = "address"
 )
 
-func (p *Person) GetName() string {
+func (p *PersonMap) GetName() string {
 	return (*p)[keyPersonName]
 }
 
-func (p *Person) GetAddress() string {
+func (p *PersonMap) GetAddress() string {
 	return (*p)[keyPersonAddress]
 }
-func (p *Person) SetName(val string) {
+func (p *PersonMap) SetName(val string) {
 	(*p)[keyPersonName] = val
 }
 
-func (p *Person) SetAddress(val string) {
+func (p *PersonMap) SetAddress(val string) {
 	(*p)[keyPersonAddress] = val
 }
 
-func (p *Person) StoreToJson() (string, error) {
+func (p *PersonMap) StoreToJson() (string, error) {
 	json, err := json.Marshal(*p)
 
 	if err != nil {
@@ -58,7 +58,7 @@ func main() {
 	fmt.Print("Enter your address: ")
 	address, _ := reader.ReadString('\n')
 
-	p := make(Person)
+	p := make(PersonMap)
 	p.SetName(name[:len(name)-1])
 	p.SetAddress(address[:len(address)-1])
 	fileName, err := p.StoreToJson()
