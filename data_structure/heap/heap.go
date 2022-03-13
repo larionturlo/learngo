@@ -107,11 +107,15 @@ func (h *Heap) Insert(n int) {
 }
 
 // Function delete a number to the heap
-func (h *Heap) Delete(i int) {
-	if i < 0 || i > len(h.heap)-1 {
-		return
+func (h *Heap) Extract(i int) int {
+	n := 0
+	last := len(h.heap) - 1
+	if i < 0 || i > last {
+		return n
 	}
-	h.heap[i], h.heap[len(h.heap)-1] = h.heap[len(h.heap)-1], h.heap[i]
-	h.heap = h.heap[:len(h.heap)-1]
+	h.heap[i], h.heap[last] = h.heap[last], h.heap[i]
+	n = h.heap[last]
+	h.heap = h.heap[:last]
 	h.bubbleDown(i)
+	return n
 }

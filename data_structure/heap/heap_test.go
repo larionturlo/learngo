@@ -128,6 +128,7 @@ func TestHeap_Delete(t *testing.T) {
 		fields fields
 		args   args
 		want   []int
+		want2  int
 	}{
 		{
 			"minHeap",
@@ -137,6 +138,7 @@ func TestHeap_Delete(t *testing.T) {
 			},
 			args{0},
 			[]int{},
+			0,
 		},
 		{
 			"minHeap",
@@ -146,6 +148,7 @@ func TestHeap_Delete(t *testing.T) {
 			},
 			args{0},
 			[]int{4, 5},
+			3,
 		},
 		{
 			"maxHeap",
@@ -155,6 +158,7 @@ func TestHeap_Delete(t *testing.T) {
 			},
 			args{0},
 			[]int{4, 3},
+			5,
 		},
 		{
 			"maxHeap",
@@ -164,6 +168,7 @@ func TestHeap_Delete(t *testing.T) {
 			},
 			args{3},
 			[]int{5, 4, 3, 3, 2, 2, 1},
+			4,
 		},
 	}
 	for _, tt := range tests {
@@ -172,9 +177,12 @@ func TestHeap_Delete(t *testing.T) {
 				heap:     tt.fields.heap,
 				heapType: tt.fields.heapType,
 			}
-			h.Delete(tt.args.i)
+			got2 := h.Extract(tt.args.i)
 			if got := h.AsSlice(); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("heapify() = %v, want %v", got, tt.want)
+				t.Errorf("heap after Extract() = %v, want %v", got, tt.want)
+			}
+			if got2 != tt.want2 {
+				t.Errorf("result Extract() = %v, want %v", got2, tt.want2)
 			}
 		})
 	}
