@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-func main() {
+func sliceFromInput() {
 	inputData := new([]byte)
 
 	exit := false

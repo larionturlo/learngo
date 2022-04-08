@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-func main() {
+func trunk() {
 	var enter string
 	var needNumber bool = true
 

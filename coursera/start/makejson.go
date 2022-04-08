@@ -51,7 +51,7 @@ func (p *PersonMap) StoreToJson() (string, error) {
 	return fileName, err
 }
 
-func main() {
+func makejson() {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Enter your name: ")
 	name, _ := reader.ReadString('\n')

@@ -27,7 +27,7 @@ func (pl *PersonList) Print() {
 	}
 }
 
-func main() {
+func readInput() {
 	var filepath string
 	fmt.Println("Enter a filepath(escape space):")
 	fmt.Scan(&filepath)

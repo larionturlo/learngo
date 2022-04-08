@@ -1,5 +1,5 @@
 package main
 
-func main() {
+func hello() {
 	println("Hello World! fmt actualy don't need")
 }
