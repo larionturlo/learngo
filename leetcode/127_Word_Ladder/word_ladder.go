@@ -14,6 +14,7 @@ func stringsDiff(a, b string) int {
 
 type layer map[string]string
 
+// Problem https://leetcode.com/problems/word-ladder/
 func ladderLength(beginWord string, endWord string, wordList []string) int {
 	layerList := make([]layer, len(wordList), len(wordList))
 	minPathLen := 0
